@@ -1,5 +1,6 @@
 import 'package:fic4_flutter_auth_bloc/bloc/register/register_bloc.dart';
 import 'package:fic4_flutter_auth_bloc/data/models/request/register_model.dart';
+import 'package:fic4_flutter_auth_bloc/presentation/pages/login_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -129,6 +130,11 @@ class _RegisterPageState extends State<RegisterPage> {
                         content: Text(
                             'success register with id: ${state.model.id}')),
                   );
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => const LoginPage(),
+                      ));
                 }
               },
               builder: (context, state) {

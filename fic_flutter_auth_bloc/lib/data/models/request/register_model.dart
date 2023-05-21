@@ -15,7 +15,7 @@ class RegisterModel {
     required this.name,
     required this.email,
     required this.password,
-    this.avatar = 'https://api.lorem.space/image/face?w=640&h=480',
+    this.avatar = 'https://cdn-icons-png.flaticon.com/512/3135/3135715.png',
   });
 
   Map<String, dynamic> toMap() {

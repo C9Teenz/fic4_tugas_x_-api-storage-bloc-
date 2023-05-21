@@ -1,8 +1,11 @@
+import 'package:fic4_flutter_auth_bloc/bloc/profile/profile_bloc.dart';
 import 'package:fic4_flutter_auth_bloc/bloc/register/register_bloc.dart';
 import 'package:fic4_flutter_auth_bloc/data/datasources/api_datasources.dart';
 import 'package:fic4_flutter_auth_bloc/presentation/pages/register_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+
+import 'bloc/login/login_bloc.dart';
 
 void main() {
   runApp(const MyApp());
@@ -13,8 +16,18 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocProvider(
-      create: (context) => RegisterBloc(ApiDatasource()),
+    return MultiBlocProvider(
+      providers: [
+        BlocProvider(
+          create: (context) => RegisterBloc(ApiDatasource()),
+        ),
+        BlocProvider(
+          create: (context) => LoginBloc(ApiDatasource()),
+        ),
+        BlocProvider(
+            create: (context) =>
+                ProfileBloc(ApiDatasource())..add(DataProfileEvent())),
+      ],
       child: MaterialApp(
         title: 'Flutter Demo',
         theme: ThemeData(
